@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  app_network:
+
+services:
+  db:
+    image: mysql:8.0.25
+    restart: always
+    ports:
+      - '3307:3306'
+    volumes:
+      - mydb:/var/lib/mysql
+    networks:
+      - app_network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      TZ: 'Asia/Tokyo'
+
+volumes:
+  mydb:
